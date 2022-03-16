@@ -2,9 +2,9 @@ import {Links, LinksFunction, LiveReload, Meta, Outlet, Scripts} from "remix";
 import {IDocumentProps, IErrorProps, ILayoutProps} from "~/types/IRoot";
 
 import styles from "~/styles/app.css"
-import Navbar from "~/components/header/navbar";
 import Header from "~/components/header/header";
 import Footer from "~/components/footer/footer";
+import Error from "~/components/error/error";
 
 export const links: LinksFunction = () => {
     return [{rel: "stylesheet", href: styles}]
@@ -46,10 +46,10 @@ export function Document({children, title}: IDocumentProps) {
 
 export function Layout({children}: ILayoutProps) {
     return (
-        <div>
-            <Header />
+        <div className="w-full min-h-screen h-full flex flex-col">
+            <Header/>
             {children}
-            <Footer />
+            <Footer/>
         </div>
     )
 }
@@ -58,8 +58,7 @@ export function ErrorBoundary({error}: IErrorProps) {
     return (
         <Document>
             <Layout>
-                <h1>Something went wrong!</h1>
-                <p>{error.message}</p>
+                <Error error={error}/>
             </Layout>
         </Document>
     )
