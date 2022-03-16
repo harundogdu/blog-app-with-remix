@@ -25,7 +25,7 @@ export const loader: LoaderFunction = ({params}) => {
     return json(post)
 }
 
-function $PostSlug() {
+export default function $PostSlug() {
     const post = useLoaderData<Post>();
     return (
         <div className="flex-1 px-24 py-4">
@@ -44,5 +44,3 @@ export function CatchBoundary() {
         </Document>
     )
 }
-
-export default $PostSlug;
